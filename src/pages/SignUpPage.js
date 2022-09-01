@@ -1,9 +1,61 @@
 import React from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import ButtonAuthenWithGoogle from "../components/ButtonAuthenWithGoogle";
+import { ButtonAuthenWithGoogle } from "../components/common/Button";
+import Button from "../components/common/Button/Button";
+import { Input, InputCheckbox } from "../components/common/Input";
+import Label from "../components/common/Label/Label";
+import { IconEye } from "../components/Icon";
 import LayoutAuthentication from "../layouts/LayoutAuthentication";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+
+const schema = Yup.object({
+    fullName: Yup.string()
+        .min(5, "Full name must contain 5 characters")
+        .max(30, "Full name must be 30 character or less")
+        .required("Full name is required field"),
+    email: Yup.string()
+        .email("Email must be a valid email")
+        .required("Email is required field"),
+    password: Yup.string()
+        .required("Please Enter your password")
+        .matches(
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+            "Password must contain 8 characters, one uppercase, one lowercase, one number and one special case Character"
+        ),
+});
 
 const SignUpPage = () => {
+    const [loading, setLoading] = useState(false);
+
+    const { handleSubmit, control } = useForm({
+        defaultValues: {
+            fullName: "",
+            email: "",
+            password: "",
+            tearms: true,
+        },
+        resolver: yupResolver(schema),
+    });
+    console.log("re-render-form ");
+
+    const handleTogglePassword = (inputState, setInputState) => {
+        setInputState({
+            ...inputState,
+            type: inputState.type === "password" ? "text" : "password",
+        });
+    };
+
+    const onSubmit = async (value) => {
+        setLoading(true);
+        setTimeout(() => {
+            console.log(value);
+            setLoading(false);
+        }, 5000);
+    };
+
     return (
         <LayoutAuthentication heading="Sign Up">
             <h2 className="text-center text-xs  md:text-sm px-2 pb-4 md:pb-5 ">
@@ -25,6 +77,79 @@ const SignUpPage = () => {
             <div className="mb-2 md:mb-0 md:p-3 font-normal text-sm text-text2">
                 Or sign up with email
             </div>
+            <form
+                className="w-full flex flex-col gap-3"
+                onSubmit={handleSubmit(onSubmit)}
+            >
+                <div className="w-full">
+                    <Label htmlFor="fullName">Full Name *</Label>
+                    <Input
+                        id="fullName"
+                        name="fullName"
+                        type="text"
+                        defaultValue=""
+                        control={control}
+                        placeholder="Jhon Doe"
+                    />
+                </div>
+                <div className="w-full">
+                    <Label htmlFor="email">Email *</Label>
+                    <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        defaultValue=""
+                        control={control}
+                        placeholder="Example@gmail.com"
+                    />
+                </div>
+                <div className="w-full">
+                    <Label htmlFor="password">Password *</Label>
+                    <Input
+                        id="password"
+                        type="password"
+                        name="password"
+                        defaultValue=""
+                        control={control}
+                        placeholder="Create a password"
+                        icon={{
+                            position: "right",
+                            element: <IconEye isOpen={false} />,
+                            toggleElement: <IconEye isOpen />,
+                            onClick: handleTogglePassword,
+                            className: "",
+                        }}
+                    />
+                </div>
+                <div className="w-full flex justify-start items-center gap-5 py-3">
+                    <InputCheckbox
+                        label="hello"
+                        name="tearms"
+                        control={control}
+                        size={20}
+                        className="border-1 rounded"
+                        colorActive="#1DC071"
+                        id="tearms"
+                    />
+                    <label
+                        htmlFor="tearms"
+                        className="text-xs md:text-sm text-text2 font-normal cursor-pointer pr-4 md:pr-5"
+                    >
+                        I agree to the{" "}
+                        <a href="/" className="text-secondary underline">
+                            Tearms of Use
+                        </a>{" "}
+                        and have read and understand the{" "}
+                        <a href="/" className="text-secondary underline">
+                            Privacy policy.
+                        </a>
+                    </label>
+                </div>
+                <Button type="submit" isLoading={loading}>
+                    {" "}
+                    Submit
+                </Button>
+            </form>
         </LayoutAuthentication>
     );
 };

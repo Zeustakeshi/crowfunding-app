@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../components/Logo";
+import { Logo } from "../components/common/Logo";
 import PropTypes from "prop-types";
 import { withErrorBoundary } from "react-error-boundary";
 import ErrorComponent from "../components/common/ErrorComponent";

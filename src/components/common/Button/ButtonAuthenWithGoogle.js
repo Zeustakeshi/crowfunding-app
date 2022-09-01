@@ -1,5 +1,5 @@
 import React from "react";
-import iconGoogle from "../assets/images/Google.svg";
+import iconGoogle from "../../../assets/images/Google.svg";
 
 const ButtonAuthenWithGoogle = ({ className = "", content }) => {
     return (
