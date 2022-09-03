@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useController } from "react-hook-form";
-import { IconCheck } from "../../Icon";
+import { IconCheck } from "../Icon";
 
 const InputCheckbox = ({
     name = "",

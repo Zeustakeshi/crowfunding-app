@@ -10,11 +10,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, ButtonAuthenWithGoogle } from "../components/Button";
 
+const defaultValues = {
+    email: "",
+    password: "",
+};
+
 const schema = Yup.object({
-    fullName: Yup.string()
-        .min(5, "Full name must contain 5 characters")
-        .max(30, "Full name must be 30 character or less")
-        .required("Full name is required field"),
     email: Yup.string()
         .email("Email must be a valid email")
         .required("Email is required field"),
@@ -26,19 +27,14 @@ const schema = Yup.object({
         ),
 });
 
-const SignUpPage = () => {
+const SignInPage = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
-        document.title = "Sign-up";
+        document.title = "Sign-in";
     }, []);
 
     const { handleSubmit, control } = useForm({
-        defaultValues: {
-            fullName: "",
-            email: "",
-            password: "",
-            terms: true,
-        },
+        defaultValues: defaultValues,
         resolver: yupResolver(schema),
     });
     console.log("re-render-form ");
@@ -59,17 +55,17 @@ const SignUpPage = () => {
     };
 
     return (
-        <LayoutAuthentication heading="Sign Up">
+        <LayoutAuthentication heading="Welcome Back!">
             <h2 className="text-center text-xs  md:text-sm px-2 pb-4 md:pb-5 ">
                 <span className="text-text3 font-normal">
-                    Already have an account?
+                    Dont have an account?
                 </span>
                 <NavLink
-                    to="/sign-in"
+                    to="/sign-up"
                     className="text-primary font-medium underline "
                 >
                     {"  "}
-                    Sign in
+                    Sign up
                 </NavLink>
             </h2>
             <ButtonAuthenWithGoogle
@@ -77,23 +73,12 @@ const SignUpPage = () => {
                 className="mb-3 md:mb-0"
             />
             <div className="mb-2 md:mb-0 md:p-3 font-normal text-sm text-text2 dark:text-text3 md:dark:text-white">
-                Or sign up with email
+                Or sign in with email
             </div>
             <form
                 className="w-full flex flex-col gap-3"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <div className="w-full">
-                    <Label htmlFor="fullName">Full Name *</Label>
-                    <Input
-                        id="fullName"
-                        name="fullName"
-                        type="text"
-                        defaultValue=""
-                        control={control}
-                        placeholder="Jhon Doe"
-                    />
-                </div>
                 <div className="w-full">
                     <Label htmlFor="email">Email *</Label>
                     <Input
@@ -113,7 +98,7 @@ const SignUpPage = () => {
                         name="password"
                         defaultValue=""
                         control={control}
-                        placeholder="Create a password"
+                        placeholder="Enter Password"
                         icon={{
                             position: "right",
                             element: <IconEye isOpen={false} />,
@@ -123,36 +108,21 @@ const SignUpPage = () => {
                         }}
                     />
                 </div>
-                <div className="w-full flex justify-start items-center gap-5 py-3">
-                    <InputCheckbox
-                        label="hello"
-                        name="terms"
-                        control={control}
-                        size={20}
-                        className="border-1 rounded"
-                        colorActive="#1DC071"
-                        id="terms"
-                    />
-                    <label
-                        htmlFor="terms"
-                        className="text-xs md:text-sm text-text2 font-normal cursor-pointer pr-4 md:pr-5"
+                <div className="ml-auto ">
+                    <NavLink
+                        to="/forgot-pass"
+                        className="text-primary font-medium text-sm inline-block py-3"
                     >
-                        I agree to the{" "}
-                        <span className="text-secondary underline">
-                            Terms of Use
-                        </span>{" "}
-                        and have read and understand the{" "}
-                        <span className="text-secondary underline">
-                            Privacy policy.
-                        </span>
-                    </label>
+                        Forgot password
+                    </NavLink>
                 </div>
+
                 <Button type="submit" isLoading={loading}>
-                    Create my account
+                    Sign in
                 </Button>
             </form>
         </LayoutAuthentication>
     );
 };
 
-export default SignUpPage;
+export default SignInPage;

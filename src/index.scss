@@ -6,4 +6,17 @@
     body {
         @apply font-primary text-base;
     }
+    .bg-ellipse {
+        position: absolute;
+        z-index: 0;
+        isolation: isolate;
+        width: 180vw;
+        height: 180vw;
+        top: 40%;
+        right: 0;
+        transform: translateX(30%);
+        border-radius: 9999px;
+        opacity: 0.03;
+        @apply bg-secondary dark:bg-primary bg-no-repeat;
+    }
 }

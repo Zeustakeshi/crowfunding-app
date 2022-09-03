@@ -27,9 +27,6 @@ module.exports = {
                 lite: "#FCFCFD",
                 error: "#EB5757",
             },
-            backgroundImage: {
-                ellipse: "url(./assets/images/ellipse.png)",
-            },
         },
     },
     plugins: [],
