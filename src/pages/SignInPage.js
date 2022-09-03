@@ -9,6 +9,7 @@ import LayoutAuthentication from "../layouts/LayoutAuthentication";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, ButtonAuthenWithGoogle } from "../components/Button";
+import classNames from "../utils/classNames";
 
 const defaultValues = {
     email: "",
@@ -56,7 +57,12 @@ const SignInPage = () => {
 
     return (
         <LayoutAuthentication heading="Welcome Back!">
-            <h2 className="text-center text-xs  md:text-sm px-2 pb-4 md:pb-5 ">
+            <h2
+                className={classNames(
+                    "text-center text-xs md:text-sm",
+                    "px-2 pb-4 md:pb-5"
+                )}
+            >
                 <span className="text-text3 font-normal">
                     Dont have an account?
                 </span>
@@ -70,13 +76,18 @@ const SignInPage = () => {
             </h2>
             <ButtonAuthenWithGoogle
                 content="Sign up with google"
-                className="mb-3 md:mb-0"
+                className={classNames("mb-3 md:mb-0")}
             />
-            <div className="mb-2 md:mb-0 md:p-3 font-normal text-sm text-text2 dark:text-text3 md:dark:text-white">
+            <div
+                className={classNames(
+                    "mb-2 md:mb-0 md:p-3",
+                    "font-normal text-sm text-text2 dark:text-text3 md:dark:text-white"
+                )}
+            >
                 Or sign in with email
             </div>
             <form
-                className="w-full flex flex-col gap-3"
+                className={classNames("w-full", "flexc gap-3")}
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <div className="w-full">
@@ -111,7 +122,11 @@ const SignInPage = () => {
                 <div className="ml-auto ">
                     <NavLink
                         to="/forgot-pass"
-                        className="text-primary font-medium text-sm inline-block py-3"
+                        className={classNames(
+                            "text-primary font-medium text-sm",
+                            "inline-block",
+                            "py-3"
+                        )}
                     >
                         Forgot password
                     </NavLink>

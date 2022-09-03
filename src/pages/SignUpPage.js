@@ -9,6 +9,7 @@ import LayoutAuthentication from "../layouts/LayoutAuthentication";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, ButtonAuthenWithGoogle } from "../components/Button";
+import classNames from "../utils/classNames";
 
 const schema = Yup.object({
     fullName: Yup.string()
@@ -60,7 +61,12 @@ const SignUpPage = () => {
 
     return (
         <LayoutAuthentication heading="Sign Up">
-            <h2 className="text-center text-xs  md:text-sm px-2 pb-4 md:pb-5 ">
+            <h2
+                className={classNames(
+                    "text-center text-xs md:text-sm",
+                    "px-2 pb-4 md:pb-5"
+                )}
+            >
                 <span className="text-text3 font-normal">
                     Already have an account?
                 </span>
@@ -76,11 +82,16 @@ const SignUpPage = () => {
                 content="Sign up with google"
                 className="mb-3 md:mb-0"
             />
-            <div className="mb-2 md:mb-0 md:p-3 font-normal text-sm text-text2 dark:text-text3 md:dark:text-white">
+            <div
+                className={classNames(
+                    "mb-2 md:mb-0 md:p-3",
+                    "font-normal text-sm text-text2 dark:text-text3 md:dark:text-white"
+                )}
+            >
                 Or sign up with email
             </div>
             <form
-                className="w-full flex flex-col gap-3"
+                className={classNames("flexc gap-3", "w-full")}
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <div className="w-full">
@@ -123,7 +134,13 @@ const SignUpPage = () => {
                         }}
                     />
                 </div>
-                <div className="w-full flex justify-start items-center gap-5 py-3">
+                <div
+                    className={classNames(
+                        "w-full",
+                        "flex-j-start gap-5",
+                        "py-3"
+                    )}
+                >
                     <InputCheckbox
                         label="hello"
                         name="terms"
@@ -135,7 +152,11 @@ const SignUpPage = () => {
                     />
                     <label
                         htmlFor="terms"
-                        className="text-xs md:text-sm text-text2 font-normal cursor-pointer pr-4 md:pr-5"
+                        className={classNames(
+                            "text-xs md:text-sm text-text2 font-normal",
+                            "cursor-pointer",
+                            "pr-4 md:pr-5"
+                        )}
                     >
                         I agree to the{" "}
                         <span className="text-secondary underline">

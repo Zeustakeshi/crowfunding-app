@@ -7,7 +7,7 @@ import classNames from "../../utils/classNames";
 const ButtonAuthenWithGoogle = ({ className = "", content, ...props }) => {
     return (
         <Button
-            className={classNames("gap-3 w-full", className)}
+            className={classNames("gap-3 ", "w-full", className)}
             kind="secondary"
             onClick={() => {
                 alert("authen success");

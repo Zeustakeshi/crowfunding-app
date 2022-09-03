@@ -6,6 +6,9 @@
     body {
         @apply font-primary text-base;
     }
+}
+
+@layer components {
     .bg-ellipse {
         position: absolute;
         z-index: 0;
@@ -18,5 +21,47 @@
         border-radius: 9999px;
         opacity: 0.03;
         @apply bg-secondary dark:bg-primary bg-no-repeat;
+    }
+}
+
+@layer utilities {
+    .img-cover {
+        @apply w-full h-full object-cover;
+    }
+    .abs-center {
+        @apply absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%];
+    }
+    .flexc {
+        @apply flex flex-col;
+    }
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
+    .flexc-center {
+        @apply flex flex-col justify-center items-center;
+    }
+    .flex-start {
+        @apply flex justify-start items-start;
+    }
+    .flexc-start {
+        @apply flex flex-col justify-start items-start;
+    }
+    .flex-j-start {
+        @apply flex justify-start items-center;
+    }
+    .flexc-j-start {
+        @apply flex flex-col justify-start items-center;
+    }
+    .flex-i-start {
+        @apply flex items-start justify-center;
+    }
+    .flexc-i-start {
+        @apply flex flex-col items-start justify-center;
+    }
+    .flex-j-between {
+        @apply flex justify-between items-center;
+    }
+    .flexc-j-between {
+        @apply flex flex-col justify-between items-center;
     }
 }

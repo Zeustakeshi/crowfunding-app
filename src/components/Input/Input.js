@@ -29,7 +29,8 @@ const Input = ({
         <>
             <div
                 className={classNames(
-                    "relative flex justify-between items-center border border-whiteStrock dark:border-darkStroke rounded-xl transition-all",
+                    "flex-center",
+                    "border border-whiteStrock dark:border-darkStroke rounded-xl transition-all",
                     error?.message
                         ? " !border-error "
                         : "focus-within:border-green-200 dark:focus-within:border-y-darkStroke",
@@ -46,9 +47,14 @@ const Input = ({
 
                 <input
                     placeholder={placeholder}
-                    className={`bg-transparent outline-none w-full transition-all rounded-[inherit] text-text1 dark:text-white font-medium text-base leading-[22px] pl-5  py-3 ${
-                        !icon ? "pr-5" : ""
-                    }  flex justify-start items-center placeholder:text-text4 dark:placeholder:text-text2 placeholder:text-sm placeholder:leading-[22px] ${className}`}
+                    className={classNames(
+                        "text-text1 dark:text-white font-medium text-base leading-[22px]",
+                        "bg-transparent outline-none w-full transition-all rounded-[inherit] pl-5  py-3",
+                        "placeholder:text-text4 dark:placeholder:text-text2 placeholder:text-sm placeholder:leading-[22px]",
+                        "flex-center",
+                        !icon ? "pr-5" : "",
+                        className
+                    )}
                     autoComplete="off"
                     type={inputState.type}
                     {...field}
@@ -64,7 +70,14 @@ const Input = ({
                 )}
             </div>
             {error && (
-                <span className="transition-all inline-block pointer-events-none p-2 font-medium text-xs md:text-sm text-error text-left">
+                <span
+                    className={classNames(
+                        "inline-block",
+                        "pointer-events-none",
+                        "font-medium text-xs md:text-sm text-error text-left",
+                        "transition-all p-2 "
+                    )}
+                >
                     {error.message}
                 </span>
             )}
@@ -72,11 +85,16 @@ const Input = ({
     );
 };
 
-const IputIcon = ({ inputState, setInputState, className }) => {
+const IputIcon = ({ inputState, setInputState, className = "" }) => {
     const { icon } = inputState;
     return (
         <span
-            className={`cursor-pointer transition-all  p-3 ${className || ""}`}
+            className={classNames(
+                "cursor-pointer",
+                "transition-all",
+                "p-3",
+                className
+            )}
             onClick={() => {
                 if (icon.toggleElement) {
                     const temp = icon.element;

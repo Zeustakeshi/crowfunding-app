@@ -34,7 +34,10 @@ const Button = ({
     const ButtonTypeClassName = checkButtonType(kind);
 
     const nodeClassName = classNames(
-        "flex justify-center items-center  rounded-xl w-full transition-all outline-none",
+        "flex-center",
+        "rounded-xl",
+        " w-full ",
+        "transition-all outline-none",
         isLoading || disabled
             ? "bg-opacity-80 select-none cursor-default pointer-events-none"
             : "",

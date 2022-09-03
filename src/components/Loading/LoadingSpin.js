@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "../../utils/classNames";
 const LoadingSpin = ({ size = 30, borderSize = 4, color = "white" }) => {
     return (
         <div
@@ -9,7 +10,7 @@ const LoadingSpin = ({ size = 30, borderSize = 4, color = "white" }) => {
                 borderTopColor: color,
                 borderBottomColor: color,
             }}
-            className={`rounded-full animate-spin`}
+            className={classNames("rounded-full", "animate-spin")}
         ></div>
     );
 };

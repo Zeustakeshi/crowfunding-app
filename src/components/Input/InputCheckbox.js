@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useController } from "react-hook-form";
+import classNames from "../../utils/classNames";
 import { IconCheck } from "../Icon";
 
 const InputCheckbox = ({
@@ -29,7 +30,15 @@ const InputCheckbox = ({
                 background: checked ? colorActive || "#2EBAC1" : "",
                 // borderRadius: size / 10,
             }}
-            className={` group cursor-pointer w-full h-full relative border-2 overflow-hidden flex justify-center items-center transition-all ${className}`}
+            className={classNames(
+                "group",
+                "cursor-pointer",
+                "w-full h-full relative",
+                "border-2",
+                "flex-center",
+                "overflow-hidden transition-all",
+                className
+            )}
         >
             <input
                 type="checkbox"
@@ -56,9 +65,12 @@ const InputCheckbox = ({
                 {...props}
             />
             <span
-                className={`${
+                className={classNames(
+                    "flex-center",
+                    "w-full h-full",
+                    "select-none",
                     checked ? `inline-block ` : "hidden"
-                } select-none flex justify-center items-center w-full h-full `}
+                )}
             >
                 <IconCheck />
             </span>
