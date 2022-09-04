@@ -5,7 +5,7 @@ import { Logo } from "../components/Logo";
 import ErrorComponent from "../components/common/ErrorComponent";
 import classNames from "../utils/classNames";
 
-const LayoutAuthentication = ({ children, heading }) => {
+const AuthenticationLayout = ({ children, heading }) => {
     return (
         <div
             className={classNames(
@@ -18,7 +18,7 @@ const LayoutAuthentication = ({ children, heading }) => {
             )}
         >
             <div className="bg-ellipse"></div>
-            <Logo size={40} className="md:mb-16 mb-5"></Logo>
+            <Logo size={52} sizeMobile={40} className="md:mb-16 mb-5"></Logo>
             <div
                 className={classNames(
                     "relative",
@@ -42,11 +42,11 @@ const LayoutAuthentication = ({ children, heading }) => {
     );
 };
 
-LayoutAuthentication.propTypes = {
+AuthenticationLayout.propTypes = {
     heading: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
 };
 
-export default withErrorBoundary(LayoutAuthentication, {
+export default withErrorBoundary(AuthenticationLayout, {
     FallbackComponent: ErrorComponent,
 });

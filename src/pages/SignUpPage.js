@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { Input, InputCheckbox } from "../components/Input";
 import { Label } from "../components/Label";
 import { IconEye } from "../components/Icon";
-import LayoutAuthentication from "../layouts/LayoutAuthentication";
+import AuthenticationLayout from "../layouts/AuthenticationLayout";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, ButtonAuthenWithGoogle } from "../components/Button";
@@ -60,7 +60,7 @@ const SignUpPage = () => {
     };
 
     return (
-        <LayoutAuthentication heading="Sign Up">
+        <AuthenticationLayout heading="Sign Up">
             <h2
                 className={classNames(
                     "text-center text-xs md:text-sm",
@@ -172,7 +172,7 @@ const SignUpPage = () => {
                     Create my account
                 </Button>
             </form>
-        </LayoutAuthentication>
+        </AuthenticationLayout>
     );
 };
 

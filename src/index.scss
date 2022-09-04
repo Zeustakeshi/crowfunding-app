@@ -6,6 +6,9 @@
     body {
         @apply font-primary text-base;
     }
+    input {
+        @apply outline-none;
+    }
 }
 
 @layer components {
@@ -58,10 +61,38 @@
     .flexc-i-start {
         @apply flex flex-col items-start justify-center;
     }
+    .flexc-end {
+        @apply flex flex-col justify-end items-end;
+    }
+    .flex-j-end {
+        @apply flex justify-end items-center;
+    }
+    .flexc-j-end {
+        @apply flex flex-col justify-end items-center;
+    }
+    .flex-i-end {
+        @apply flex items-end justify-center;
+    }
+    .flexc-i-end {
+        @apply flex flex-col items-end justify-center;
+    }
     .flex-j-between {
         @apply flex justify-between items-center;
     }
     .flexc-j-between {
         @apply flex flex-col justify-between items-center;
+    }
+}
+
+@layer components {
+    .logo {
+        --size: 140px;
+        --mobile-size: 120px;
+        width: var(--mobile-size);
+        height: var(--mobile-size);
+        @media (min-width: 768px) {
+            width: var(--size);
+            height: var(--size);
+        }
     }
 }

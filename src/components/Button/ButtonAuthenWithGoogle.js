@@ -8,7 +8,7 @@ const ButtonAuthenWithGoogle = ({ className = "", content, ...props }) => {
     return (
         <Button
             className={classNames("gap-3 ", "w-full", className)}
-            kind="secondary"
+            kind="outline"
             onClick={() => {
                 alert("authen success");
             }}

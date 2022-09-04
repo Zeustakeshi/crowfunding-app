@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import { Input, InputCheckbox } from "../components/Input";
-import { Label } from "../components/Label";
-import { IconEye } from "../components/Icon";
-import LayoutAuthentication from "../layouts/LayoutAuthentication";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Button, ButtonAuthenWithGoogle } from "../components/Button";
+import { IconEye } from "../components/Icon";
+import { Input } from "../components/Input";
+import { Label } from "../components/Label";
+import AuthenticationLayout from "../layouts/AuthenticationLayout";
 import classNames from "../utils/classNames";
 
 const defaultValues = {
@@ -56,7 +55,7 @@ const SignInPage = () => {
     };
 
     return (
-        <LayoutAuthentication heading="Welcome Back!">
+        <AuthenticationLayout heading="Welcome Back!">
             <h2
                 className={classNames(
                     "text-center text-xs md:text-sm",
@@ -136,7 +135,7 @@ const SignInPage = () => {
                     Sign in
                 </Button>
             </form>
-        </LayoutAuthentication>
+        </AuthenticationLayout>
     );
 };
 
