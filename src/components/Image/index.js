@@ -1,6 +1,5 @@
 import { forwardRef, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 import classNames from "../../utils/classNames";
 
 function Image(
@@ -73,13 +72,13 @@ function Image(
     );
 }
 
-Image.propTypes = {
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string,
-    imgErrorClass: PropTypes.string,
-    className: PropTypes.string,
-    errorIconSize: PropTypes.number,
-};
+// Image.propTypes = {
+//     src: PropTypes.string.isRequired,
+//     alt: PropTypes.string,
+//     imgErrorClass: PropTypes.string,
+//     className: PropTypes.string,
+//     errorIconSize: PropTypes.number,
+// };
 
 const ImgWrapper = ({ children, to }) => {
     if (to) {

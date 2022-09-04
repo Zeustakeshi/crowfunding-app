@@ -9,6 +9,7 @@ module.exports = {
             colors: {
                 primary: "#1DC071",
                 primaryExtra: "#1BB068",
+                primaryExtra2: "#F1FBF7",
                 secondary: "#6F49FD",
                 darkStroke: "#3A3A43",
                 whiteStrock: "#F1F1F3",
@@ -27,6 +28,9 @@ module.exports = {
                 graySoft: "#FCFCFC",
                 lite: "#FCFCFD",
                 error: "#EB5757",
+            },
+            boxShadow: {
+                style1: "10px 10px 20px rgba(218, 213, 213, 0.15)",
             },
         },
     },

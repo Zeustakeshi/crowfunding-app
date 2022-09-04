@@ -16,8 +16,9 @@ const Search = ({
             className={classNames(
                 "flex-j-start",
                 "px-2",
-                "shadow-[10px_10px_20px_rgba(218,213,213,0.15)]",
+                "shadow-style1 dark:shadow-none",
                 " rounded-3xl",
+                "bg-transparent  dark:bg-darkSecondary",
                 WrapperClassName
             )}
         >
@@ -25,9 +26,9 @@ const Search = ({
                 placeholder={placeholder}
                 className={classNames(
                     "pl-6 pr-2 py-4",
-                    "text-text-1 font-normal text-sm placeholder:text-text4",
+                    "text-text-1 dark:text-white font-normal text-sm placeholder:text-text4 dark:placeholder:text-text2",
                     " rounded-[inherit]",
-
+                    "w-full",
                     className
                 )}
             />

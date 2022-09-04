@@ -1,25 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types";
-import classNames from "../utils/classNames";
+import { Button } from "../components/Button";
+import { IconArrow, IconGrowth } from "../components/Icon";
+import Image from "../components/Image";
 import Logo from "../components/Logo/Logo";
 import { Search } from "../components/Search";
-import { IconArrow, IconGrowth } from "../components/Icon";
-import { Button } from "../components/Button";
-import Image from "../components/Image";
+import classNames from "../utils/classNames";
 
 const Header = (props) => {
     return (
         <div className={classNames("mb-5 md:mb-8 px-3", "flex-j-between")}>
-            <div className={classNames("flex-j-start gap-16")}>
+            <div className={classNames("flex-j-start gap-10 flex-1")}>
                 <Logo size={52} sizeMobile={40} />
-                <Search placeholder="Do fundrise now" />
+                <Search
+                    placeholder="Do fundrise now"
+                    WrapperClassName={classNames("flex-1", "max-w-[458px]")}
+                />
             </div>
-            <div className="flex-j-end gap-10">
-                <div className="flex-center gap-2">
+            <div className="flex-j-end gap-10 flex-1">
+                <div className="flex-center gap-2 text-text2 dark:text-text3">
                     <span>
                         <IconGrowth />
                     </span>
-                    <span className="text-text2 font-semibold flex-1">
+                    <span className=" font-semibold flex-1">
                         Fundrising for
                     </span>
                     <span>
