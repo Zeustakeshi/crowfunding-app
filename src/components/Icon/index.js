@@ -20,3 +20,4 @@ export { default as IconPlus } from "./IconPlus";
 export { default as IconProfile } from "./IconProfile";
 export { default as IconSearch } from "./IconSearch";
 export { default as IconWithdraw } from "./IconWithdraw";
+export { default as IconFolder } from "./IconFolder";

@@ -55,14 +55,19 @@ const Sidebar = (props) => {
                 "bg-white dark:bg-darkSecondary",
                 "shadow-style1 dark:shadow-none",
                 "rounded-3xl",
-                "flexc-center gap-7"
+                "flexc-center gap-7",
+                "min-h-[733px]"
             )}
         >
             {sidebarLinks?.map((link) => {
                 return (
                     <div
                         className={classNames(
-                            " w-full min-w-[327px] md:min-w-[auto] md:w-auto"
+                            " w-full min-w-[327px] md:min-w-[auto] md:w-auto  ",
+                            "last:mt-auto ",
+                            "last:shadow-style2 dark:last:shadow-style3Dark",
+                            "last:rounded-xl",
+                            "last:dark:bg-darkSecondary"
                         )}
                         key={link.title}
                     >
@@ -71,7 +76,7 @@ const Sidebar = (props) => {
                                 to={link.url}
                                 className={({ isActive }) =>
                                     classNames(
-                                        "sidebar-item",
+                                        "sidebar-item block",
                                         isActive ? "sidebar-item--active" : ""
                                     )
                                 }

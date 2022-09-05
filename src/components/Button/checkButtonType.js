@@ -38,8 +38,8 @@ export default function checkButtonType(kind) {
             return classNames(
                 "p-3",
                 "bg-transparent",
-                "text-text4",
-                "rounded-xl border border-whiteStroke dark:border-darkStroke dark:text-white",
+                "text-text2 dark:text-white",
+                "rounded-xl border border-whiteStroke dark:border-darkStroke ",
                 "min-h-[52px]"
             );
         default:
