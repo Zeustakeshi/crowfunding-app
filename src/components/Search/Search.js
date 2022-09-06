@@ -15,7 +15,7 @@ const Search = ({
         <div
             className={classNames(
                 "flex-j-start",
-                "px-2",
+                "md:px-2",
                 "shadow-style1 dark:shadow-none",
                 " rounded-3xl",
                 "bg-transparent  dark:bg-darkSecondary",
@@ -25,8 +25,8 @@ const Search = ({
             <input
                 placeholder={placeholder}
                 className={classNames(
-                    "pl-6 pr-2 py-4",
-                    "text-text-1 dark:text-white font-normal text-sm placeholder:text-text4 dark:placeholder:text-text2",
+                    "pl-5 md:pl-6 pr-2 py-3 md:py-4",
+                    "text-text-1 dark:text-white font-normal text-xs md:text-sm placeholder:text-text4 dark:placeholder:text-text2",
                     " rounded-[inherit]",
                     "w-full",
                     className
@@ -36,7 +36,8 @@ const Search = ({
                 onClick={handleSearch}
                 className={classNames(
                     "rounded-[inherit]",
-                    "h-10",
+                    "min-h-[28px] h-7 md:h-10 ",
+                    "px-4 py-2 md:px-7 md:py-3",
                     ButtonSearchClassName
                 )}
                 kind="primary2"

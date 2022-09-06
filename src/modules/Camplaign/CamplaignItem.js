@@ -34,7 +34,7 @@ const CamplaignItem = ({}) => {
     return (
         <div
             className={classNames(
-                "w-[288px] ",
+                "max-w-[288px] ",
                 "shadow-style3 dark:shadow-none",
                 "bg-white dark:bg-darkSecondary",
                 "rounded-2xl",

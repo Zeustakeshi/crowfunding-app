@@ -1,22 +1,23 @@
-export const IconPlus = () => {
+import classNames from "../../utils/classNames";
+
+export const IconPlus = ({ className }) => {
     return (
         <svg
-            width="24"
-            height="24"
+            className={classNames("w-[24px] h-[24px]", className)}
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
             <path
                 d="M12 5V19"
-                stroke="#A2A2A8"
+                stroke="currentcolor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
             <path
                 d="M5 12H19"
-                stroke="#A2A2A8"
+                stroke="currentcolor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

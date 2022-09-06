@@ -55,7 +55,7 @@ const Sidebar = (props) => {
                 "bg-white dark:bg-darkSecondary",
                 "shadow-style1 dark:shadow-none",
                 "rounded-3xl",
-                "flexc-center gap-7",
+                "hidden md:flexc-center gap-7",
                 "min-h-[733px]"
             )}
         >

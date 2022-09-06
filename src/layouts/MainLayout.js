@@ -4,7 +4,7 @@ import Header from "../modules/Header";
 import Sidebar from "../modules/Sidebar";
 import classNames from "../utils/classNames";
 
-const MainLayout = ({ children, ...props }) => {
+const MainLayout = ({ children, contentClassName }) => {
     return (
         <div
             className={classNames(
@@ -16,7 +16,11 @@ const MainLayout = ({ children, ...props }) => {
             <Header></Header>
             <div className={classNames("flex-start gap-10")}>
                 <Sidebar></Sidebar>
-                {children}
+                <div
+                    className={classNames("flex-1 shrink-0", contentClassName)}
+                >
+                    {children}
+                </div>
             </div>
         </div>
     );
@@ -24,6 +28,7 @@ const MainLayout = ({ children, ...props }) => {
 
 MainLayout.propTypes = {
     children: PropTypes.node.isRequired,
+    contentClassName: PropTypes.string,
 };
 
 export default MainLayout;

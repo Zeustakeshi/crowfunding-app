@@ -29,9 +29,17 @@ export default function checkButtonType(kind) {
         case "secondary2":
             return classNames(
                 "px-3 py-2",
-                "bg-darkSecondary",
+                "bg-secondary",
                 "text-white text-sm",
                 "rounded-md",
+                "min-h-[40px]"
+            );
+        case "secondary3":
+            return classNames(
+                "px-5 py-3 md:px-8 md:py-3 ",
+                "bg-[#EEEAFD] dark:bg-[#352A65]",
+                "text-[#6F49FD] dark:text-white !text-sm md:!text-base ",
+                "rounded-xl",
                 "min-h-[40px]"
             );
         case "outline":

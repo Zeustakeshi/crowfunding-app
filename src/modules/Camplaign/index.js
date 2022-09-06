@@ -1,1 +1,1 @@
-export { default as PopularCamplaign } from "./PopularCamplaign";
+export { default as Camplaign } from "./Camplaign";

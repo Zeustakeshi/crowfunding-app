@@ -21,3 +21,4 @@ export { default as IconProfile } from "./IconProfile";
 export { default as IconSearch } from "./IconSearch";
 export { default as IconWithdraw } from "./IconWithdraw";
 export { default as IconFolder } from "./IconFolder";
+export { default as IconPlay } from "./IconPlay";

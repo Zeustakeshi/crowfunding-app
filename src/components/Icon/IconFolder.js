@@ -1,10 +1,10 @@
 import React from "react";
+import classNames from "../../utils/classNames";
 
-const IconFolder = () => {
+const IconFolder = ({ className }) => {
     return (
         <svg
-            width="16"
-            height="12"
+            className={classNames("w-[16px] h-[12px]", className)}
             viewBox="0 0 16 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

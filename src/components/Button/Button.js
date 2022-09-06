@@ -28,7 +28,6 @@ const Button = ({
         "font-semibold text-base",
         "transition-all outline-none",
         "hover:bg-opacity-80",
-        "min-w-[81px]",
         isLoading || disabled
             ? "bg-opacity-40 select-none cursor-default pointer-events-none"
             : "",
