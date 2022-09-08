@@ -15,19 +15,20 @@ const Search = ({
         <div
             className={classNames(
                 "flex-j-start",
-                "md:px-2",
+                "px-2",
                 "shadow-style1 dark:shadow-none",
                 " rounded-3xl",
-                "bg-transparent  dark:bg-darkSecondary",
+                "bg-white  dark:bg-darkSecondary",
                 WrapperClassName
             )}
         >
             <input
                 placeholder={placeholder}
                 className={classNames(
-                    "pl-5 md:pl-6 pr-2 py-3 md:py-4",
+                    "pl-3 md:pl-6 pr-2 py-3 md:py-4",
                     "text-text-1 dark:text-white font-normal text-xs md:text-sm placeholder:text-text4 dark:placeholder:text-text2",
                     " rounded-[inherit]",
+                    "bg-transparent",
                     "w-full",
                     className
                 )}

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { Input, InputCheckbox } from "../components/Input";
 import { Label } from "../components/Label";
-import { IconEye } from "../components/Icon";
+import { IconCampaign, IconEye } from "../components/Icon";
 import AuthenticationLayout from "../layouts/AuthenticationLayout";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -126,11 +126,9 @@ const SignUpPage = () => {
                         control={control}
                         placeholder="Create a password"
                         icon={{
-                            position: "right",
-                            element: <IconEye isOpen={false} />,
-                            toggleElement: <IconEye isOpen />,
-                            onClick: handleTogglePassword,
-                            className: "",
+                            elementRight: <IconEye isOpen={false} />,
+                            toggleElementRight: <IconEye isOpen />,
+                            onClickElementRight: handleTogglePassword,
                         }}
                     />
                 </div>

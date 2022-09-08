@@ -10,12 +10,13 @@ const MainLayout = ({ children, contentClassName }) => {
             className={classNames(
                 "p-6 md:p-10",
                 "bg-lite dark:bg-darkBG",
-                "min-h-screen"
+                "min-h-screen",
+                "relative"
             )}
         >
             <Header></Header>
             <div className={classNames("flex-start gap-10")}>
-                <Sidebar></Sidebar>
+                <Sidebar />
                 <div
                     className={classNames("flex-1 shrink-0", contentClassName)}
                 >

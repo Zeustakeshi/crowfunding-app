@@ -8,7 +8,13 @@ import classNames from "../utils/classNames";
 
 const Header = (props) => {
     return (
-        <div className={classNames("mb-5 md:mb-8 px-3", "flex-j-between")}>
+        <div
+            className={classNames(
+                "mb-5 md:mb-8 px-3",
+                "flex-j-between",
+                "w-full"
+            )}
+        >
             <div
                 className={classNames(
                     "flex-j-start gap-5 md:gap-10 flex-1 shrink-0",

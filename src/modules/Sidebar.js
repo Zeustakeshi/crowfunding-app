@@ -53,10 +53,11 @@ const Sidebar = (props) => {
             className={classNames(
                 "mt-3 md:px-4 py-10",
                 "bg-white dark:bg-darkSecondary",
-                "shadow-style1 dark:shadow-none",
+                "shadoCreatew-style1 dark:shadow-none",
                 "rounded-3xl",
                 "hidden md:flexc-center gap-7",
-                "min-h-[733px]"
+                "min-h-[733px]",
+                "sticky top-10"
             )}
         >
             {sidebarLinks?.map((link) => {

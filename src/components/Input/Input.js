@@ -25,6 +25,7 @@ const Input = ({
         defaultValue,
     });
     const [inputState, setInputState] = useState({ icon, type });
+
     return (
         <>
             <div
@@ -34,14 +35,15 @@ const Input = ({
                     error?.message
                         ? " !border-error "
                         : "focus-within:border-green-200 dark:focus-within:border-y-darkStroke",
+
                     wrapperClassName
                 )}
             >
-                {inputState?.icon?.position === "left" && (
+                {inputState?.icon?.elementLeft && (
                     <IputIcon
                         inputState={inputState}
                         setInputState={setInputState}
-                        className={inputState.icon.className}
+                        position="left"
                     />
                 )}
 
@@ -49,10 +51,17 @@ const Input = ({
                     placeholder={placeholder}
                     className={classNames(
                         "text-text1 dark:text-white font-medium text-base leading-[22px]",
-                        "bg-transparent outline-none w-full transition-all rounded-[inherit] pl-5  py-3",
+                        "bg-transparent outline-none w-full transition-all rounded-[inherit]",
                         "placeholder:text-text4 dark:placeholder:text-text2 placeholder:text-sm placeholder:leading-[22px]",
                         "flex-center",
-                        !icon ? "pr-5" : "",
+                        "py-3",
+                        icon
+                            ? icon.elementRight && icon.elementLeft
+                                ? "px-0"
+                                : icon.elementRight
+                                ? "pr-0 pl-5"
+                                : "pr-5 pl-0"
+                            : "px-5",
                         className
                     )}
                     autoComplete="off"
@@ -61,11 +70,11 @@ const Input = ({
                     {...props}
                 />
 
-                {inputState?.icon?.position === "right" && (
+                {inputState?.icon?.elementRight && (
                     <IputIcon
                         inputState={inputState}
                         setInputState={setInputState}
-                        className={inputState.icon.className}
+                        position="right"
                     />
                 )}
             </div>
@@ -85,26 +94,42 @@ const Input = ({
     );
 };
 
-const IputIcon = ({ inputState, setInputState, className = "" }) => {
+const IputIcon = ({ inputState, setInputState, position }) => {
     const { icon } = inputState;
+    const [iconLeft, setIconLeft] = useState(icon.elementLeft);
+    const [iconRight, setIconRight] = useState(icon.elementRight);
+
+    const handleClickIcon = () => {
+        if (position === "right") {
+            if (icon.toggleElementRight) {
+                setIconRight(icon.toggleElementRight);
+                icon.toggleElementRight = iconRight;
+            }
+            if (!icon.onClickElementRight) return;
+            icon.onClickElementRight(inputState, setInputState);
+        } else if (position === "left") {
+            if (icon.toggleElementLeft) {
+                setIconLeft(icon.toggleElementLeft);
+                icon.toggleElementLeft = iconLeft;
+            }
+            if (!icon.onClickElementLeft) return;
+            icon.onClickElementLeft(inputState, setInputState);
+        } else return;
+    };
+
     return (
         <span
             className={classNames(
                 "cursor-pointer",
                 "transition-all",
                 "p-3",
-                className
+                position === "right"
+                    ? icon.elementRightClassName
+                    : icon.elementLeftClassName
             )}
-            onClick={() => {
-                if (icon.toggleElement) {
-                    const temp = icon.element;
-                    icon.element = icon.toggleElement;
-                    icon.toggleElement = temp;
-                }
-                icon.onClick(inputState, setInputState);
-            }}
+            onClick={handleClickIcon}
         >
-            {icon.element}
+            {position === "right" ? iconRight : iconLeft}
         </span>
     );
 };

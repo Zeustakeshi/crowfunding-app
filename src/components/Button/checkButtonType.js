@@ -6,7 +6,7 @@ export default function checkButtonType(kind) {
             return classNames(
                 "p-3",
                 "bg-primary dark:bg-primaryExtra",
-                "text-white",
+                "text-white ",
                 "rounded-xl",
                 "min-h-[52px]"
             );
@@ -40,7 +40,8 @@ export default function checkButtonType(kind) {
                 "bg-[#EEEAFD] dark:bg-[#352A65]",
                 "text-[#6F49FD] dark:text-white !text-sm md:!text-base ",
                 "rounded-xl",
-                "min-h-[40px]"
+                "min-h-[40px]",
+                "hover:bg-secondary dark:hover:bg-secondary hover:text-white dark:hover:text-white"
             );
         case "outline":
             return classNames(

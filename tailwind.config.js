@@ -34,6 +34,9 @@ module.exports = {
                 style2: "10px 10px 20px rgba(211, 211, 211, 0.25)",
                 style3: "0px 2px 4px rgba(184, 184, 184, 0.03), 0px 6px 12px rgba(184, 184, 184, 0.02), 0px 12px 20px rgba(184, 184, 184, 0.03)",
                 style3Dark: "10px 10px 20px rgba(2, 2, 2, 0.25)",
+                style4: "-10px 15px 20px rgba(231, 228, 228, 0.15), 10px 10px 20px rgba(231, 228, 228, 0.15)",
+                style4Dark:
+                    "0px 16px 30px rgba(33, 25, 25, 0.17), 0px 30px 60px rgba(1, 2, 9, 0.2)",
             },
         },
     },
