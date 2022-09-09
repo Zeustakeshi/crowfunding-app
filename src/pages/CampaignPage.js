@@ -1,20 +1,18 @@
 import React from "react";
 import { Button } from "../components/Button";
-import Heading from "../components/Heading/Heading";
-import { IconPlay, IconPlus } from "../components/Icon";
+import { IconPlus } from "../components/Icon";
 import MainLayout from "../layouts/MainLayout";
-import Camplaign from "../modules/Camplaign/Camplaign";
-import CamplaignLarge from "../modules/Camplaign/CamplaignLarge";
+import CampaignLarge from "../modules/Campaign/CampaignLarge";
 import classNames from "../utils/classNames";
 
 const CampaignPage = () => {
     return (
         <MainLayout contentClassName={classNames("flexc gap-10")}>
             <CreateCampaign />
-            <CamplaignLarge
+            <CampaignLarge
                 heading="Your Campaign"
                 count={4}
-                showTotalCamplaign
+                showTotalCampaign
             />
             <Button
                 kind="secondary3"

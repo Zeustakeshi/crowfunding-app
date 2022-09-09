@@ -1,18 +1,18 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
-import Camplaign from "../modules/Camplaign/Camplaign";
-import CamplaignLarge from "../modules/Camplaign/CamplaignLarge";
+import Campaign from "../modules/Campaign/Campaign";
+import CampaignLarge from "../modules/Campaign/CampaignLarge";
 
 const DashboardPage = () => {
     return (
         <MainLayout contentClassName="flexc gap-8">
-            <CamplaignLarge
+            <CampaignLarge
                 heading="Your Campaign"
                 count={1}
-                showTotalCamplaign
+                showTotalCampaign
             />
-            <Camplaign heading="Popular Campaign" />
-            <Camplaign heading="Recent Campaign" />
+            <Campaign heading="Popular Campaign" />
+            <Campaign heading="Recent Campaign" />
         </MainLayout>
     );
 };

@@ -3,8 +3,11 @@ import React from "react";
 import Image from "../../components/Image";
 import classNames from "../../utils/classNames";
 import { IconFolder } from "../../components/Icon";
+import CampaignTitle from "./CampaignTitle";
+import CampaignDesc from "./CampaignDesc";
+import CampaignMeta from "./CampaignMeta";
 
-const camplaign = {
+const Campaign = {
     imageUrl:
         "https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dHJlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
     tag: "Education",
@@ -16,11 +19,11 @@ const camplaign = {
         avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
     },
     raisedOf: 1900,
-    raised: 2000,
+    raised: "$2000",
     totalBacker: 173,
 };
 
-const CamplaignItem = ({}) => {
+const CampaignItem = ({}) => {
     const {
         imageUrl,
         tag,
@@ -30,7 +33,7 @@ const CamplaignItem = ({}) => {
         raised,
         raisedOf,
         totalBacker,
-    } = camplaign;
+    } = Campaign;
     return (
         <div
             className={classNames(
@@ -44,7 +47,7 @@ const CamplaignItem = ({}) => {
             <div
                 className={classNames("w-full h-[158px]", "rounded-[inherit]")}
             >
-                <Image src={imageUrl} alt="camplaign image" />
+                <Image src={imageUrl} alt="Campaign image" />
             </div>
             <div className={classNames("p-5")}>
                 <div
@@ -60,45 +63,33 @@ const CamplaignItem = ({}) => {
                     <span>{tag}</span>
                 </div>
                 <div className={classNames("mb-4")}>
-                    <h3
+                    <CampaignTitle
                         className={classNames(
-                            "text-text1 dark:text-white font-semibold text-base",
-                            "mb-1",
-                            "content-overflow-one-line "
+                            "font-semibold text-base",
+                            "mb-1"
                         )}
                     >
                         {title}
-                    </h3>
-                    <p
-                        className="content-overflow-limitline"
-                        style={{
-                            "--line": 3,
-                        }}
-                    >
-                        {description}
-                    </p>
+                    </CampaignTitle>
+                    <CampaignDesc>{description}</CampaignDesc>
                 </div>
                 <div className={classNames("flex-j-between", "mb-5")}>
-                    <span className={classNames("flexc gap-y-1")}>
-                        <span className="text-text2 dark:text-text4 font-semibold text-sm">
-                            ${raised}
-                        </span>
-                        <span className="text-text4 dark:text-text3 text-xs font-normal">
-                            Raised of ${raisedOf}
-                        </span>
-                    </span>
-                    <span className={classNames("flexc gap-y-1")}>
-                        <span className="text-text2 dark:text-text4 font-semibold text-sm">
-                            {totalBacker}
-                        </span>
-                        <span className="text-text4 dark:text-text3 text-xs font-normal">
-                            Total backers
-                        </span>
-                    </span>
+                    <CampaignMeta
+                        amount={raised}
+                        desc={` Raised of ${raisedOf}`}
+                        className="font-semibold text-sm"
+                        descClassName="text-xs font-normal"
+                    />
+                    <CampaignMeta
+                        amount={totalBacker}
+                        desc={`Total backer`}
+                        className="font-semibold text-sm"
+                        descClassName="text-xs font-normal"
+                    />
                 </div>
                 <div className={classNames("flex-j-start gap-3")}>
                     <span className="w-[30px] h-[30px] rounded-full inline-block">
-                        <Image src={auth.avatar} />
+                        <Image src={auth.avatar} to="/campaign" />
                     </span>
                     <span className="flex-j-start gap-1">
                         <span>by</span>
@@ -112,7 +103,7 @@ const CamplaignItem = ({}) => {
     );
 };
 
-// CamplaignItem.propTypes = {
+// CampaignItem.propTypes = {
 //     imageUrl: PropTypes.string,
 //     tag: PropTypes.string,
 //     title: PropTypes.string,
@@ -126,4 +117,4 @@ const CamplaignItem = ({}) => {
 //     totalBacker: PropTypes.number,
 // };
 
-export default CamplaignItem;
+export default CampaignItem;

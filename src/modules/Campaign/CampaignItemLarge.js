@@ -4,8 +4,11 @@ import Image from "../../components/Image";
 import classNames from "../../utils/classNames";
 import { IconFolder, IconPlay } from "../../components/Icon";
 import Progress from "../../components/Progress/Progress";
+import CampaignTitle from "./CampaignTitle";
+import CampaignDesc from "./CampaignDesc";
+import CampaignMeta from "./CampaignMeta";
 
-const CamplaignItemLarge = ({ camplaign }) => {
+const CampaignItemLarge = ({ Campaign }) => {
     return (
         <div
             className={classNames(
@@ -22,7 +25,7 @@ const CamplaignItemLarge = ({ camplaign }) => {
                     "mb-5 md:mb-0"
                 )}
             >
-                <Image src={camplaign.videoUrl} className="select-none" />
+                <Image src={Campaign.videoUrl} className="select-none" />
                 <div className={classNames("play-btn")}>
                     <IconPlay />
                 </div>
@@ -40,37 +43,26 @@ const CamplaignItemLarge = ({ camplaign }) => {
                     <span>
                         <IconFolder className="w-[20px] h-[16px]" />
                     </span>
-                    <span>{camplaign.tag}</span>
+                    <span>{Campaign.tag}</span>
                 </div>
                 <div className={classNames("mb-4")}>
-                    <h1
-                        className={classNames(
-                            "text-text1 dark:text-white font-bold md:text-xl",
-                            "mb-4",
-                            "content-overflow-one-line "
-                        )}
+                    <CampaignTitle
+                        className={classNames("font-bold md:text-xl", "mb-4")}
                     >
-                        {camplaign.title}
-                    </h1>
-                    <p
-                        className="content-overflow-limitline"
-                        style={{
-                            "--line": 3,
-                        }}
-                    >
-                        {camplaign.description}
-                    </p>
+                        {Campaign.title}
+                    </CampaignTitle>
+                    <CampaignDesc>{Campaign.description}</CampaignDesc>
                 </div>
                 <div className="py-3 mb-3">
-                    <Progress progress={camplaign.progress} />
+                    <Progress progress={Campaign.progress} />
                 </div>
                 <div className={classNames("flex-j-start gap-8 md:gap-16")}>
                     <RaisedAmountDetails
-                        amount={`$${camplaign.raised}`}
-                        description={`Raised of $${camplaign.raisedOf}`}
+                        amount={`$${Campaign.raised}`}
+                        description={`Raised of $${Campaign.raisedOf}`}
                     />
                     <RaisedAmountDetails
-                        amount={camplaign.TotalBackers}
+                        amount={Campaign.TotalBackers}
                         description="Total backers"
                     />
                     <RaisedAmountDetails
@@ -85,20 +77,17 @@ const CamplaignItemLarge = ({ camplaign }) => {
 
 const RaisedAmountDetails = ({ amount, description }) => {
     return (
-        <div
-            className={classNames(
-                "flexc-start gap-1 ",
-                "text-sm md:text-base text-text4"
-            )}
-        >
-            <span className="text-text2 dark:text-text4 font-bold md:text-xl text-base">
-                {amount}
-            </span>
-            <span>{description}</span>
-        </div>
+        <CampaignMeta
+            amount={amount}
+            desc={description}
+            className="font-bold md:text-xl text-base"
+            descClassName="text-sm md:text-base"
+        />
     );
 };
 
-CamplaignItemLarge.propTypes = {};
+CampaignItemLarge.propTypes = {
+    Campaign: PropTypes.object.isRequired,
+};
 
-export default CamplaignItemLarge;
+export default CampaignItemLarge;
