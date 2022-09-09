@@ -9,7 +9,11 @@ export const IconArrow = ({ direction = "down" }) => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <path d="M1 1L6 6L11 1" stroke="#A2A2A8" strokeWidth="2" />
+                    <path
+                        d="M1 1L6 6L11 1"
+                        stroke="currentcolor"
+                        strokeWidth="2"
+                    />
                 </svg>
             );
         case "right":
@@ -23,7 +27,7 @@ export const IconArrow = ({ direction = "down" }) => {
                 >
                     <path
                         d="M10 17L15 12L10 7"
-                        stroke="#A2A2A8"
+                        stroke="currentcolor"
                         strokeWidth="2"
                     />
                 </svg>
@@ -39,7 +43,7 @@ export const IconArrow = ({ direction = "down" }) => {
                 >
                     <path
                         d="M15 7L10 12L15 17"
-                        stroke="#A2A2A8"
+                        stroke="currentcolor"
                         strokeWidth="2"
                     />
                 </svg>

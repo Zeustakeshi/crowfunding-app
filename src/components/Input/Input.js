@@ -25,7 +25,6 @@ const Input = ({
         defaultValue,
     });
     const [inputState, setInputState] = useState({ icon, type });
-
     return (
         <>
             <div

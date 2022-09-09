@@ -6,6 +6,55 @@ import { IconEdit, IconEmail, IconEye, IconLock } from "../components/Icon";
 import Input from "../components/Input/Input";
 import MainLayout from "../layouts/MainLayout";
 import classNames from "../utils/classNames";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { today } from "../contansts";
+
+const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+const passRegExp =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+const schemaPersonalInformation = Yup.object({
+    firstName: Yup.string()
+        .min(5, "First name must contain 5 characters")
+        .max(30, "First name must be 20 character or less")
+        .required("First name is required field"),
+    lastName: Yup.string()
+        .min(3, "Last name must contain 5 characters")
+        .max(20, "Last name must be 20 character or less")
+        .required("Last name is required field"),
+    dateOfBirth: Yup.date()
+        .min(new Date("1970-1-1"), "You are not that old")
+        .max(
+            today,
+            `Date of Birth must be at earlier than ${today.toLocaleDateString()}`
+        ),
+
+    mobileNumber: Yup.string()
+        .matches(phoneRegExp, "Phone number is not valid")
+        .min(8, "Minimum length of phone number is 8 digits")
+        .max(15, "Maximum length of phone number is 15 digits"),
+});
+
+const schemaCredentials = Yup.object({
+    email: Yup.string()
+        .email("Email must be a valid email")
+        .required("Email is required field"),
+    password: Yup.string()
+        .required("Please Enter your password")
+        .matches(
+            passRegExp,
+            "Password must contain 8 characters, one uppercase, one lowercase, one number and one special case Character"
+        ),
+    confirmPassword: Yup.string().when("password", (password, field) =>
+        password
+            ? field
+                  .required()
+                  .oneOf([Yup.ref("password")], "Password does not match")
+            : field
+    ),
+});
 
 const ProfilePage = () => {
     const handleTogglePassword = (inputState, setInputState) => {
@@ -43,15 +92,17 @@ const ProfilePage = () => {
                 <FormGroup
                     title="Personal Information"
                     defaultValues={{
-                        firstName: "",
-                        lastName: "",
-                        dateOfBirth: "2011-09-29",
-                        mobileNumber: "",
+                        firstName: "Mahfuzul Islam",
+                        lastName: "Nabil",
+                        dateOfBirth: "1998-09-27",
+                        mobileNumber: "+123 456 7890",
                     }}
+                    resolver={yupResolver(schemaPersonalInformation)}
                 >
-                    {(control) => (
+                    {(control, isUpdate) => (
                         <>
                             <FormField
+                                isUpdate={isUpdate}
                                 title="First Name"
                                 type="text"
                                 placeholder="First Name"
@@ -59,6 +110,7 @@ const ProfilePage = () => {
                                 control={control}
                             />
                             <FormField
+                                isUpdate={isUpdate}
                                 title="Last Name"
                                 type="text"
                                 placeholder="Last Name"
@@ -66,6 +118,7 @@ const ProfilePage = () => {
                                 control={control}
                             />
                             <FormField
+                                isUpdate={isUpdate}
                                 title="Date of Birth"
                                 type="date"
                                 placeholder="Date of Birth"
@@ -73,6 +126,7 @@ const ProfilePage = () => {
                                 control={control}
                             />
                             <FormField
+                                isUpdate={isUpdate}
                                 title="Mobile Number"
                                 type="tel"
                                 placeholder="Mobile Number"
@@ -85,14 +139,16 @@ const ProfilePage = () => {
                 <FormGroup
                     title="Credentials"
                     defaultValues={{
-                        email: "",
-                        password: "",
-                        confirmPassword: "",
+                        email: "hellouihut@gmail.com",
+                        password: "password",
+                        confirmPassword: "password",
                     }}
+                    resolver={yupResolver(schemaCredentials)}
                 >
-                    {(control) => (
+                    {(control, isUpdate) => (
                         <>
                             <FormField
+                                isUpdate={isUpdate}
                                 className="col-span-2"
                                 title="Email"
                                 type="email"
@@ -105,6 +161,7 @@ const ProfilePage = () => {
                                 }}
                             />
                             <FormField
+                                isUpdate={isUpdate}
                                 title="New Password"
                                 type="password"
                                 placeholder="New Password"
@@ -119,6 +176,7 @@ const ProfilePage = () => {
                                 }}
                             />
                             <FormField
+                                isUpdate={isUpdate}
                                 title="Confirm Password"
                                 type="password"
                                 placeholder="Confirm Password"
@@ -140,18 +198,23 @@ const ProfilePage = () => {
     );
 };
 
-const FormGroup = ({ children, title, defaultValues }) => {
+const FormGroup = ({ children, title, defaultValues, resolver, ...props }) => {
     const [isUpdate, setIsUpdate] = useState(false);
     const { handleSubmit, control } = useForm({
+        resolver,
         defaultValues: defaultValues,
     });
 
     const onSubmit = (value) => {
-        setIsUpdate(false);
         console.log(value);
+        setIsUpdate(false);
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="mb-12 md:mb-14">
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mb-12 md:mb-14 transition-all"
+            {...props}
+        >
             <div className={classNames("flex-j-between")}>
                 <h2 className="text-text1 dark:text-white font-bold text-base md:text-xl">
                     {title}
@@ -178,7 +241,7 @@ const FormGroup = ({ children, title, defaultValues }) => {
                     "mt-6 md:mt-11 "
                 )}
             >
-                {children(control)}
+                {children(control, isUpdate)}
             </div>
             {isUpdate && (
                 <Button
@@ -195,7 +258,9 @@ const FormGroup = ({ children, title, defaultValues }) => {
         </form>
     );
 };
-const FormField = ({ title, className, ...props }) => {
+
+const FormField = ({ title, className, isUpdate, ...props }) => {
+    const value = props.control._formValues[props.name];
     return (
         <div className={className}>
             <div
@@ -206,7 +271,21 @@ const FormField = ({ title, className, ...props }) => {
             >
                 {title}
             </div>
-            <Input {...props} wrapperClassName="px-[6px]" />
+            {isUpdate ? (
+                <Input {...props} wrapperClassName="px-[6px]" />
+            ) : (
+                <div
+                    className={classNames(
+                        "py-3 px-5",
+                        "text-text1 dark:text-white font-medium text-base leading-[22px] ",
+                        "bg-transparent"
+                    )}
+                >
+                    {props.type === "password"
+                        ? new Array(value.length).fill("•").map((item) => item)
+                        : value}
+                </div>
+            )}
         </div>
     );
 };

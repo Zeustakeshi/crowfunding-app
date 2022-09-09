@@ -8,6 +8,7 @@ const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage"));
 const CampaignPage = lazy(() => import("./pages/CampaignPage"));
 const PaymentPage = lazy(() => import("./pages/PaymentPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const WithdrawPage = lazy(() => import("./pages/WithdrawPage"));
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/forgot-pass" element={<ForgotPasswordPage />} />
                 <Route path="/campaign" element={<CampaignPage />} />
                 <Route path="/payment" element={<PaymentPage />} />
+                <Route path="/withdraw" element={<WithdrawPage />}></Route>
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/" element={<DashboardPage />} />
             </Routes>

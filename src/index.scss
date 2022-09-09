@@ -147,3 +147,19 @@
     line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+
+/* animation */
+/* move-down */
+.move-down-enter {
+    transform: translateY(-50%);
+}
+
+.move-down-enter-active {
+    transform: translateY(0);
+}
+
+.move-down-exit-active {
+    // transform: translateY(-15%);
+    opacity: 0;
+    visibility: hidden;
+}
