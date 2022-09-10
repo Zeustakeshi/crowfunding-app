@@ -35,7 +35,7 @@ const Campaigns = [
 
 const CampaignLarge = ({ className, heading, count, showTotalCampaign }) => {
     return (
-        <div className={classNames(className)}>
+        <div className={classNames("max-w-[1048px]", className)}>
             <Heading number={showTotalCampaign && Campaigns.length}>
                 {heading}
             </Heading>

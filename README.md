@@ -16,6 +16,3 @@ components:
 -   Fundrisingfor
 -   Dropdown
 -   Paginate
-
-code thêm authcampaign
-chỉnh lại max-w của campaign large

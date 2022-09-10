@@ -1,11 +1,12 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import Image from "../../components/Image";
 import classNames from "../../utils/classNames";
 import { IconFolder } from "../../components/Icon";
 import CampaignTitle from "./CampaignTitle";
 import CampaignDesc from "./CampaignDesc";
 import CampaignMeta from "./CampaignMeta";
+import CampaignAuth from "./CampaignAuth";
 
 const Campaign = {
     imageUrl:
@@ -87,34 +88,24 @@ const CampaignItem = ({}) => {
                         descClassName="text-xs font-normal"
                     />
                 </div>
-                <div className={classNames("flex-j-start gap-3")}>
-                    <span className="w-[30px] h-[30px] rounded-full inline-block">
-                        <Image src={auth.avatar} to="/campaign" />
-                    </span>
-                    <span className="flex-j-start gap-1">
-                        <span>by</span>
-                        <span className="text-text2 dark:text-text4 font-semibold">
-                            {auth.name}
-                        </span>
-                    </span>
-                </div>
+                <CampaignAuth avatar={auth.avatar} name={auth.name} />
             </div>
         </div>
     );
 };
 
-// CampaignItem.propTypes = {
-//     imageUrl: PropTypes.string,
-//     tag: PropTypes.string,
-//     title: PropTypes.string,
-//     description: PropTypes.string,
-//     auth: PropTypes.shape({
-//         name: PropTypes.string,
-//         avatar: PropTypes.string,
-//     }),
-//     raised: PropTypes.number,
-//     raisedOf: PropTypes.number,
-//     totalBacker: PropTypes.number,
-// };
+CampaignItem.propTypes = {
+    imageUrl: PropTypes.string,
+    tag: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    auth: PropTypes.shape({
+        name: PropTypes.string,
+        avatar: PropTypes.string,
+    }),
+    raised: PropTypes.number,
+    raisedOf: PropTypes.number,
+    totalBacker: PropTypes.number,
+};
 
 export default CampaignItem;

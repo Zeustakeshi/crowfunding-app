@@ -19,7 +19,7 @@ const CampaignItemLarge = ({ Campaign }) => {
             <div
                 className={classNames(
                     "flex-1 shrink-0",
-                    "md:h-[266px] h-[210px]",
+                    "md:h-[266px] h-[210px] md:min-w-[583px] ",
                     "rounded-[inherit]",
                     "relative",
                     "mb-5 md:mb-0"
